@@ -1,0 +1,866 @@
+:root {
+  --pink-bg: #fdebf1;
+  --pink-soft: #fce0ea;
+  --blush-pink: #f5b8ce;
+  --pink-accent: #e56b99;
+  --pink-dark: #c94e7d;
+  --maroon: #7a1c46;
+  --cream: #fffaf6;
+  --cream-card: #fffdf9;
+  --gold: #c69c53;
+  --gold-light: #e8d2a6;
+  --gold-glow: rgba(198, 156, 83, 0.28);
+  --peach-banner: #f4b2a4;
+  --peach-btn: #e89584;
+  --lavender-bg: #f6eaf6;
+}
+
+/* Lenis Smooth Scroll Compatibility */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: linear-gradient(180deg, var(--cream) 0%, #fff2f7 50%, var(--cream) 100%);
+  color: #33272c;
+  padding-bottom: 88px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.01em;
+}
+
+.text-maroon { color: var(--maroon) !important; }
+.text-pink-accent { color: var(--pink-accent) !important; }
+.text-gold { color: var(--gold) !important; }
+.bg-soft-pink { background-color: var(--pink-soft) !important; }
+.bg-cream { background-color: var(--cream-card) !important; }
+.x-small { font-size: 0.76rem; }
+.cursor-pointer { cursor: pointer; }
+
+.border-gold-subtle {
+  border: 1px solid rgba(198, 156, 83, 0.34) !important;
+}
+
+.max-w-960 { max-width: 980px; }
+.max-w-540 { max-width: 540px; }
+.max-w-520 { max-width: 520px; }
+.max-w-340 { max-width: 340px; }
+.max-w-240 { max-width: 240px; }
+.qty-group { width: 120px; }
+
+/* =========================================================
+   1. GRAND SILK CURTAIN OPENING (PEMBUKAAN HOME)
+   ========================================================= */
+#boutique-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  overflow: hidden;
+}
+
+#boutique-intro.intro-finished {
+  display: none !important;
+  pointer-events: none;
+}
+
+.intro-curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  background: radial-gradient(circle at center, #fff7fa 0%, #fbd6e4 55%, #f4b7ce 100%);
+  z-index: 1;
+  will-change: transform;
+}
+
+.curtain-left {
+  left: 0;
+  border-right: 2px solid var(--gold);
+  box-shadow: 10px 0 35px rgba(122, 28, 70, 0.14);
+}
+
+.curtain-right {
+  right: 0;
+  border-left: 2px solid var(--gold);
+  box-shadow: -10px 0 35px rgba(122, 28, 70, 0.14);
+}
+
+.intro-center-emblem {
+  position: relative;
+  z-index: 2;
+  padding: 28px 36px;
+  border-radius: 28px;
+  background: rgba(255, 253, 249, 0.92);
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 20px 50px rgba(122, 28, 70, 0.18);
+  will-change: transform, opacity;
+}
+
+.intro-flower-ring {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-soft), #fff8ec);
+  border: 1.5px dashed var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spinSlow 6s linear infinite;
+}
+
+.intro-bloom-icon {
+  font-size: 2rem;
+  color: var(--pink-accent);
+  animation: pulseBloom 1.4s ease-in-out infinite alternate;
+}
+
+.intro-sub {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  font-weight: 700;
+  display: block;
+}
+
+.intro-brand-title {
+  font-size: 2rem;
+  background: linear-gradient(90deg, var(--maroon), var(--pink-accent), var(--gold), var(--maroon));
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldTextShimmer 2.5s linear infinite;
+}
+
+@keyframes pulseBloom {
+  0% { transform: scale(0.88) rotate(-10deg); }
+  100% { transform: scale(1.15) rotate(12deg); }
+}
+
+@keyframes goldTextShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 220% center; }
+}
+
+/* =========================================================
+   2. FALLING PETALS, FLOATING BOKEH & CURSOR SPARKLES
+   ========================================================= */
+#petal-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1045;
+  overflow: hidden;
+}
+
+.falling-petal {
+  position: absolute;
+  top: -30px;
+  border-radius: 150% 0 150% 0;
+  pointer-events: none;
+  animation: petalFall linear forwards;
+  box-shadow: 0 3px 8px rgba(229, 107, 153, 0.18);
+}
+
+.falling-petal.petal-lily-shape {
+  border-radius: 80% 10% 80% 10%;
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.65);
+}
+
+.falling-petal.petal-blur {
+  filter: blur(1.5px);
+  opacity: 0.55;
+}
+
+.gold-dust-orb {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8dc 0%, var(--gold) 70%, transparent 100%);
+  pointer-events: none;
+  animation: dustRise linear forwards;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -10px, 0) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(var(--sway, 40px), 50vh, 0) rotate(200deg) scale(1.05);
+  }
+  88% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(calc(var(--sway, 40px) * -0.65), 106vh, 0) rotate(390deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes dustRise {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-105vh) translateX(var(--sway, 25px)) scale(1.25);
+    opacity: 0;
+  }
+}
+
+.magic-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform, opacity;
+}
+
+/* =========================================================
+   3. GSAP WORD REVEAL & LUXURY MARQUEE
+   ========================================================= */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.14em;
+  margin-right: 0.22em;
+  perspective: 600px;
+}
+
+.word-inner {
+  display: inline-block;
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
+
+.luxury-marquee-bar {
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--pink-soft), #fff8ee, var(--pink-soft));
+  border: 1px solid rgba(198, 156, 83, 0.38);
+  box-shadow: 0 4px 16px rgba(122, 28, 70, 0.05);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  animation: marqueeScroll 24s linear infinite;
+}
+
+.marquee-track span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--maroon);
+  white-space: nowrap;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   4. TRANSPARENT TO FROSTED GLASS NAVBAR
+   ========================================================= */
+.app-topbar {
+  background: rgba(255, 250, 246, 0.48);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(198, 156, 83, 0.15);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1030;
+}
+
+.app-topbar.navbar-scrolled {
+  background: rgba(255, 253, 249, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(198, 156, 83, 0.42);
+  box-shadow: 0 8px 28px rgba(122, 28, 70, 0.09);
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+}
+
+.brand-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-soft), var(--cream));
+  border: 1px solid var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--gold-glow);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.app-topbar a:hover .brand-icon-circle {
+  transform: rotate(35deg) scale(1.1);
+}
+
+.app-bottom-nav {
+  background: rgba(255, 253, 249, 0.96);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(198, 156, 83, 0.32);
+  box-shadow: 0 -6px 24px rgba(122, 28, 70, 0.07);
+  z-index: 1030;
+}
+
+.bottom-nav-item {
+  color: #8f7a83;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 8px 0;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.bottom-nav-item i {
+  font-size: 1.22rem;
+  display: block;
+  margin-bottom: 2px;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.bottom-nav-item.active {
+  color: var(--maroon);
+}
+
+.bottom-nav-item.active i {
+  color: var(--pink-accent);
+  transform: translateY(-2px);
+}
+
+.bottom-nav-item.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 32%;
+  right: 32%;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--pink-accent), var(--gold));
+  border-radius: 0 0 4px 4px;
+}
+
+.nav-badge {
+  position: absolute;
+  top: 4px;
+  right: 22%;
+  font-size: 0.62rem;
+  padding: 2px 5px;
+  background-color: var(--maroon) !important;
+}
+
+/* =========================================================
+   5. LUXURY BUTTONS
+   ========================================================= */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease,
+              background-color 0.25s ease,
+              border-color 0.25s ease !important;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn:active,
+.btn.btn-clicked {
+  transform: scale(0.93) !important;
+}
+
+.btn-pink-primary {
+  background: linear-gradient(135deg, var(--pink-accent) 0%, var(--pink-dark) 100%);
+  border: 1px solid rgba(198, 156, 83, 0.5);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(229, 107, 153, 0.3);
+}
+
+.btn-pink-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+
+.btn-pink-primary:hover::before {
+  left: 145%;
+}
+
+.btn-pink-primary:hover {
+  background: linear-gradient(135deg, var(--pink-dark) 0%, var(--maroon) 100%);
+  border-color: var(--gold);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(122, 28, 70, 0.34);
+}
+
+.btn-soft-pink {
+  background-color: var(--pink-soft);
+  border: 1px solid rgba(198, 156, 83, 0.28);
+  color: var(--maroon);
+  font-weight: 600;
+}
+
+.btn-soft-pink:hover {
+  background-color: var(--blush-pink);
+  border-color: var(--gold);
+  color: var(--maroon);
+}
+
+.btn-gold-outline {
+  background: var(--cream-card);
+  border: 1px solid var(--gold);
+  color: var(--maroon);
+  font-weight: 600;
+}
+
+.btn-gold-outline:hover {
+  background: linear-gradient(135deg, #fff6e8, var(--pink-soft));
+  color: var(--maroon);
+  box-shadow: 0 6px 18px var(--gold-glow);
+}
+
+/* =========================================================
+   6. SHOP CATEGORY SPOTLIGHT BANNER (ROSES, LILIES, DLL)
+   ========================================================= */
+.category-spotlight-card {
+  border: 1.5px solid rgba(198, 156, 83, 0.45);
+  box-shadow: 0 10px 28px rgba(122, 28, 70, 0.07);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.category-spotlight-card.theme-all {
+  background: linear-gradient(135deg, #fff8f3 0%, #fde6ef 100%);
+}
+
+.category-spotlight-card.theme-roses {
+  background: linear-gradient(135deg, #ffe3ec 0%, #f8bfd2 55%, #fff5f7 100%);
+  border-color: #d95d8b;
+}
+
+.category-spotlight-card.theme-lilies {
+  background: linear-gradient(135deg, #ffffff 0%, #f5ecff 52%, #fde8f2 100%);
+  border-color: #c69c53;
+}
+
+.category-spotlight-card.theme-bouquet {
+  background: linear-gradient(135deg, #fff6ec 0%, #fde4ee 55%, #eef7f0 100%);
+}
+
+.category-spotlight-card.theme-decor {
+  background: linear-gradient(135deg, #fffaf0 0%, #f7e6c4 55%, #fdebf1 100%);
+}
+
+.spotlight-emblem {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.92);
+  border: 1.5px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px var(--gold-glow);
+  animation: gentleFloat 3.6s ease-in-out infinite;
+}
+
+/* =========================================================
+   7. HERO SECTION & ORNAMENTS
+   ========================================================= */
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at top right, #fff8f2 0%, #fde3ed 48%, #f8cde0 100%);
+  border: 1.5px solid rgba(198, 156, 83, 0.48);
+  border-radius: 28px;
+  box-shadow: 0 18px 44px rgba(122, 28, 70, 0.09);
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 253, 249, 0.92);
+  border: 1px solid var(--gold);
+  color: var(--maroon);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px var(--gold-glow);
+}
+
+.hero-bouquet-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(232, 210, 166, 0.65));
+  box-shadow: 0 20px 42px rgba(122, 28, 70, 0.16);
+}
+
+.hero-gold-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--gold);
+  pointer-events: none;
+  animation: spinSlow 18s linear infinite;
+}
+
+.hero-sparkle {
+  position: absolute;
+  color: var(--gold);
+  font-size: 1.15rem;
+  pointer-events: none;
+  z-index: 4;
+  animation: twinkleStar 2.2s ease-in-out infinite alternate;
+}
+
+.hero-sparkle.sp-1 { top: 6px; right: 14px; animation-delay: 0s; }
+.hero-sparkle.sp-2 { bottom: 18px; left: 4px; font-size: 1.35rem; animation-delay: 0.7s; }
+.hero-sparkle.sp-3 { top: 45%; right: -12px; font-size: 0.95rem; animation-delay: 1.3s; }
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes twinkleStar {
+  0% { transform: scale(0.6) rotate(0deg); opacity: 0.35; }
+  100% { transform: scale(1.25) rotate(25deg); opacity: 1; }
+}
+
+.hero-bouquet {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  border: 5px solid #fffdf9;
+  animation: gentleFloat 4.6s ease-in-out infinite;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-bouquet-wrapper:hover .hero-bouquet {
+  transform: scale(1.07) rotate(2deg);
+}
+
+.floral-ornament {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.48;
+  z-index: 1;
+  animation: ornamentDrift 8s ease-in-out infinite alternate;
+}
+
+.floral-ornament.ornament-tr {
+  top: -12px;
+  right: -12px;
+  width: 115px;
+  height: 115px;
+}
+
+.floral-ornament.ornament-bl {
+  bottom: -14px;
+  left: -10px;
+  width: 98px;
+  height: 98px;
+  animation-delay: -3s;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes ornamentDrift {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  100% { transform: translate(-12px, 14px) rotate(18deg) scale(1.08); }
+}
+
+.feature-pill-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--cream-card);
+  border: 1px solid var(--gold);
+  color: var(--maroon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 6px;
+  box-shadow: 0 4px 14px rgba(198, 156, 83, 0.2);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+.feature-item:hover .feature-pill-icon {
+  transform: translateY(-5px) rotate(10deg) scale(1.12);
+  background: var(--pink-soft);
+}
+
+/* =========================================================
+   8. PRODUCT CARDS (VARIED BADGES, COLOR DOTS & 3D TILT)
+   ========================================================= */
+.product-card {
+  opacity: 1 !important;
+  position: relative;
+  border-radius: 20px;
+  background: var(--cream-card) !important;
+  border: 1px solid rgba(198, 156, 83, 0.28) !important;
+  box-shadow: 0 6px 20px rgba(122, 28, 70, 0.06);
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  will-change: transform;
+}
+
+.product-card:hover {
+  border-color: var(--gold) !important;
+  box-shadow: 0 16px 34px rgba(122, 28, 70, 0.15) !important;
+}
+
+.product-img-frame {
+  position: relative;
+  overflow: hidden;
+  height: 175px;
+  background-color: var(--pink-bg);
+}
+
+.product-img-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.product-card:hover .product-img-frame::after {
+  left: 150%;
+}
+
+.product-card img.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+
+.product-card:hover img.card-img-top {
+  transform: scale(1.1);
+  filter: brightness(1.04);
+}
+
+.product-cat-pill {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--gold);
+  color: var(--maroon);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 9px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.product-ribbon-badge {
+  position: absolute;
+  bottom: 9px;
+  right: 9px;
+  background: linear-gradient(135deg, rgba(122, 28, 70, 0.88), rgba(201, 78, 125, 0.9));
+  color: #fffdf9;
+  border: 1px solid var(--gold-light);
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 50px;
+  z-index: 2;
+}
+
+.flower-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 0 1px rgba(198, 156, 83, 0.55);
+  flex-shrink: 0;
+}
+
+/* Detail Image Frame */
+.detail-img-frame {
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1.5px solid var(--gold);
+  background: var(--pink-bg);
+}
+
+.detail-img-box {
+  max-height: 350px;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-img-frame:hover .detail-img-box {
+  transform: scale(1.07);
+}
+
+/* =========================================================
+   9. CHECKOUT, ORDERS & INFO LUXURY STYLING
+   ========================================================= */
+.checkout-lavender-bg {
+  background: linear-gradient(180deg, #fdf0f5 0%, var(--lavender-bg) 100%);
+}
+
+.checkout-gradient-header {
+  background: linear-gradient(120deg, #e577a6 0%, #f1a7c5 55%, #e6c594 100%);
+}
+
+.stepper-line {
+  position: absolute;
+  top: 15px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.55);
+  z-index: 1;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.42);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.step-circle.active {
+  background: var(--cream-card);
+  color: var(--maroon);
+  box-shadow: 0 4px 12px rgba(122, 28, 70, 0.18);
+  transform: scale(1.08);
+}
+
+.payment-method-card {
+  background: var(--cream-card);
+  transition: all 0.25s ease;
+}
+
+.payment-method-card:hover {
+  border-color: var(--gold) !important;
+  transform: translateY(-2px);
+}
+
+.payment-method-card.active {
+  border-color: var(--gold) !important;
+  background: linear-gradient(135deg, #fff5f8, #fff9ee);
+  box-shadow: 0 4px 14px var(--gold-glow);
+}
+
+.checkout-blush-panel {
+  background: linear-gradient(160deg, #fde8ef 0%, #fff7f0 100%);
+  border-left: 1px solid rgba(198, 156, 83, 0.25);
+}
+
+.showcase-img-box {
+  max-height: 195px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  animation: gentleFloat 4.8s ease-in-out infinite;
+}
+
+.receipt-check-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #279b61, #198754);
+  border: 3px solid var(--gold-light);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.25);
+}
+
+.about-thumb {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  border: 1px solid var(--gold-light);
+  transition: transform 0.45s ease;
+}
+
+.about-thumb:hover {
+  transform: scale(1.04);
+}
+
+.contact-peach-banner {
+  background: linear-gradient(135deg, #f3a698 0%, #e57e9d 100%);
+  border: 1px solid rgba(198, 156, 83, 0.45);
+  border-radius: 22px;
+  box-shadow: 0 10px 26px rgba(122, 28, 70, 0.1);
+}
+
+@media (max-width: 576px) {
+  .hero-bouquet {
+    width: 185px;
+    height: 185px;
+  }
+  .product-img-frame {
+    height: 150px;
+  }
+  .intro-brand-title {
+    font-size: 1.65rem;
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Bouquet — Dreamy Bloom Boutique</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Top Glass Navbar -->
+  <header class="app-topbar sticky-top py-2 px-3">
+    <div class="container d-flex justify-content-between align-items-center max-w-960">
+      <a href="shop.html" class="btn btn-sm btn-gold-outline rounded-pill px-3">
+        <i class="bi bi-arrow-left me-1"></i> Kembali
+      </a>
+      <h6 class="font-serif fw-bold text-maroon mb-0">Dreamy Bloom Detail</h6>
+      <a href="cart.html" class="btn btn-sm btn-pink-primary rounded-pill px-3">
+        <i class="bi bi-bag-heart me-1"></i> <span id="top-cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Detail Content -->
+  <main class="container py-3 max-w-960">
+    <div class="bg-cream border-gold-subtle rounded-4 p-3 p-md-4 shadow-sm mb-4">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <div class="detail-img-frame shadow-xs">
+            <img id="detail-img" src="img/gardenflower.jpg" alt="Detail Produk" class="img-fluid w-100 detail-img-box" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <span class="badge bg-soft-pink text-maroon border-gold-subtle rounded-pill px-3 py-1 mb-2" id="detail-cat">BOUQUET</span>
+          <h3 class="font-serif fw-bold text-maroon mb-1" id="detail-title">Pastel Garden Lace Bouquet</h3>
+          <h4 class="fw-bold text-gold mb-3" id="detail-price">$88.00</h4>
+          <p class="text-muted small mb-3" id="detail-desc">
+            Buket bunga taman pastel berbalut kertas renda putih dan pita sutra mewah.
+          </p>
+
+          <!-- Pilihan Kemasan Butik -->
+          <div class="mb-3">
+            <label class="form-label x-small fw-bold text-maroon">Pilih Kemasan & Pita Butik</label>
+            <select id="detail-variant" class="form-select form-select-sm rounded-3 border-gold-subtle max-w-240">
+              <option value="Silk Ribbon & Pastel Wrap">Silk Ribbon & Pastel Wrap</option>
+              <option value="Champagne Gold Gift Box">Champagne Gold Gift Box</option>
+              <option value="White French Lace Wrap">White French Lace Wrap</option>
+              <option value="Crystal Glass Vase">Crystal Glass Vase</option>
+            </select>
+          </div>
+
+          <!-- Jumlah -->
+          <div class="mb-4">
+            <label class="form-label x-small fw-bold text-maroon">Jumlah Pesanan</label>
+            <div class="input-group input-group-sm qty-group">
+              <button type="button" class="btn btn-soft-pink" onclick="changeDetailQty(-1)">-</button>
+              <input type="text" id="detail-qty" class="form-control text-center fw-bold bg-white" value="1" readonly />
+              <button type="button" class="btn btn-soft-pink" onclick="changeDetailQty(1)">+</button>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-gold-outline rounded-pill px-4 flex-grow-1" onclick="addCurrentDetailToCart(false)">
+              <i class="bi bi-bag-plus me-1"></i> Add to Cart
+            </button>
+            <button type="button" class="btn btn-pink-primary rounded-pill px-4 flex-grow-1" onclick="addCurrentDetailToCart(true)">
+              Buy Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Koleksi Lainnya -->
+    <div class="reveal-section">
+      <h5 class="font-serif fw-bold text-maroon mb-3 reveal-words">You May Also Adore</h5>
+      <div class="row row-cols-2 row-cols-md-4 g-3" id="detail-related-grid"></div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="app-bottom-nav fixed-bottom">
+    <div class="container max-w-960">
+      <div class="row g-0 text-center">
+        <div class="col"><a href="index.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-house-heart"></i> Home</a></div>
+        <div class="col"><a href="shop.html" class="bottom-nav-item d-block text-decoration-none active"><i class="bi bi-grid"></i> Shop</a></div>
+        <div class="col"><a href="cart.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-bag-check"></i> Cart <span class="badge rounded-pill nav-badge" id="bottom-cart-badge">0</span></a></div>
+        <div class="col"><a href="orders.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-receipt"></i> Orders</a></div>
+        <div class="col"><a href="info.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-info-circle"></i> Info</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-dark border-0 rounded-4" role="alert">
+      <div class="d-flex">
+        <div class="toast-body small" id="appToastText">Ditambahkan ke keranjang!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

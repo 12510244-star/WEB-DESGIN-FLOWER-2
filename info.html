@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About & Concierge — Dreamy Bloom Boutique</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Top Glass Navbar -->
+  <header class="app-topbar sticky-top py-2 px-3">
+    <div class="container d-flex justify-content-between align-items-center max-w-960">
+      <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+        <span class="brand-icon-circle"><i class="bi bi-flower1 fs-5 text-pink-accent"></i></span>
+        <div>
+          <h6 class="font-serif fw-bold text-maroon mb-0">Dreamy Bloom</h6>
+          <span class="x-small text-gold fw-semibold d-block lh-1">Boutique Story</span>
+        </div>
+      </a>
+      <a href="cart.html" class="btn btn-sm btn-pink-primary rounded-pill px-3">
+        <i class="bi bi-bag-heart me-1"></i> <span id="top-cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Info Content -->
+  <main class="container py-3 max-w-960">
+    <!-- About Us Section -->
+    <section class="bg-cream border-gold-subtle rounded-4 p-4 p-md-5 shadow-xs mb-4 text-center reveal-section">
+      <span class="hero-eyebrow mb-2"><i class="bi bi-stars text-gold"></i> Est. 2026 • Floral Couture</span>
+      <h3 class="font-serif fw-bold text-maroon mb-2 reveal-words">About Dreamy Bloom</h3>
+      <p class="text-muted small mx-auto mb-3 max-w-540">
+        Kami merangkai bunga segar pilihan serta vas dekorasi bernuansa soft pink, blush, cream, dan sentuhan champagne gold untuk menghadirkan keanggunan di setiap momen spesial Anda.
+      </p>
+      <div class="d-flex justify-content-center gap-2 mb-4">
+        <button id="btn-story" type="button" class="btn btn-pink-primary rounded-pill px-4 py-2 x-small fw-semibold" onclick="toggleAboutInfo('story')">OUR STORY</button>
+        <button id="btn-team" type="button" class="btn btn-gold-outline rounded-pill px-4 py-2 x-small fw-semibold" onclick="toggleAboutInfo('team')">MEET OUR FLORISTS</button>
+      </div>
+      <div id="about-gallery-container" class="row g-2">
+        <div class="col-4">
+          <img src="img/florist-about.jpg" onerror="this.src='https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=400&q=80'" class="img-fluid rounded-4 about-thumb" alt="Studio 1" />
+        </div>
+        <div class="col-4">
+          <img src="img/gardenflower.jpg" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80'" class="img-fluid rounded-4 about-thumb" alt="Studio 2" />
+        </div>
+        <div class="col-4">
+          <img src="img/white rose.jpg" onerror="this.src='https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&w=400&q=80'" class="img-fluid rounded-4 about-thumb" alt="Studio 3" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Banner & Form -->
+    <section class="reveal-section">
+      <div class="contact-peach-banner p-4 text-center text-white mb-3">
+        <h3 class="font-serif fw-bold mb-1">Boutique Concierge</h3>
+        <p class="x-small mb-0">Kasaar, Airmadidi • +1 212 425 8617 • @dreamybloom.com</p>
+      </div>
+
+      <div class="bg-cream border-gold-subtle rounded-4 p-4 shadow-xs">
+        <h6 class="font-serif fw-bold text-maroon mb-3">Send a Bespoke Inquiry</h6>
+        <form onsubmit="sendContactMsg(event)">
+          <div class="mb-2">
+            <input type="text" class="form-control form-control-sm rounded-3" placeholder="Your name" required />
+          </div>
+          <div class="mb-2">
+            <input type="email" class="form-control form-control-sm rounded-3" placeholder="Your email" required />
+          </div>
+          <div class="mb-3">
+            <textarea rows="3" class="form-control form-control-sm rounded-3" placeholder="Tuliskan permintaan buket custom atau pesan Anda..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-pink-primary btn-sm rounded-pill w-100 py-2">SEND MESSAGE</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="app-bottom-nav fixed-bottom">
+    <div class="container max-w-960">
+      <div class="row g-0 text-center">
+        <div class="col"><a href="index.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-house-heart"></i> Home</a></div>
+        <div class="col"><a href="shop.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-grid"></i> Shop</a></div>
+        <div class="col"><a href="cart.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-bag-check"></i> Cart <span class="badge rounded-pill nav-badge" id="bottom-cart-badge">0</span></a></div>
+        <div class="col"><a href="orders.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-receipt"></i> Orders</a></div>
+        <div class="col"><a href="info.html" class="bottom-nav-item d-block text-decoration-none active"><i class="bi bi-info-circle"></i> Info</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-dark border-0 rounded-4" role="alert">
+      <div class="d-flex">
+        <div class="toast-body small" id="appToastText">Pesan berhasil terkirim!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Dreamy Bloom Boutique</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Top Glass Navbar -->
+  <header class="app-topbar sticky-top py-2 px-3">
+    <div class="container d-flex justify-content-between align-items-center max-w-960">
+      <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+        <span class="brand-icon-circle"><i class="bi bi-flower1 fs-5 text-pink-accent"></i></span>
+        <div>
+          <h6 class="font-serif fw-bold text-maroon mb-0">Dreamy Bloom</h6>
+          <span class="x-small text-gold fw-semibold d-block lh-1">Floral Catalog</span>
+        </div>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="btn btn-sm btn-gold-outline rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#addFlowerModal">
+          <i class="bi bi-plus-circle me-1 text-gold"></i> Tambah Bunga
+        </button>
+        <a href="cart.html" class="btn btn-sm btn-pink-primary rounded-pill px-3">
+          <i class="bi bi-bag-heart me-1"></i> <span id="top-cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Shop Content -->
+  <main class="container py-3 max-w-960">
+    <div class="mb-3 px-1">
+      <span class="x-small text-gold fw-bold text-uppercase">Dreamy Bloom Boutique</span>
+      <h2 class="font-serif fw-bold text-maroon mb-1 reveal-words">Our Botanical Collection</h2>
+      <p class="text-muted x-small mb-0">Pilih rangkaian mawar, lily, garden bouquet, dan vas dekorasi mewah</p>
+    </div>
+
+    <!-- Search & Category Filter -->
+    <div class="bg-cream border-gold-subtle p-3 rounded-4 shadow-xs mb-3">
+      <div class="row g-2 align-items-center">
+        <div class="col-md-5">
+          <div class="input-group">
+            <span class="input-group-text bg-soft-pink border-0"><i class="bi bi-search text-maroon"></i></span>
+            <input type="text" id="shop-search" class="form-control bg-soft-pink border-0 small" placeholder="Cari lily, mawar, garden, vas..." oninput="filterShop()" />
+          </div>
+        </div>
+        <div class="col-md-7 d-flex gap-1 overflow-auto pb-1">
+          <button type="button" class="btn btn-sm btn-pink-primary rounded-pill px-3 filter-btn active" onclick="setCategoryFilter('all', this)">All</button>
+          <button type="button" class="btn btn-sm btn-soft-pink rounded-pill px-3 filter-btn" onclick="setCategoryFilter('bouquet', this)">Garden Bouquet</button>
+          <button type="button" class="btn btn-sm btn-soft-pink rounded-pill px-3 filter-btn" onclick="setCategoryFilter('lilies', this)">Lilies</button>
+          <button type="button" class="btn btn-sm btn-soft-pink rounded-pill px-3 filter-btn" onclick="setCategoryFilter('roses', this)">Roses</button>
+          <button type="button" class="btn btn-sm btn-soft-pink rounded-pill px-3 filter-btn" onclick="setCategoryFilter('decor', this)">Vase & Decor</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+      <span class="x-small text-muted fw-semibold" id="shop-result-count">Menampilkan koleksi bunga</span>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="row row-cols-2 row-cols-md-4 g-3 mb-4" id="shop-grid"></div>
+  </main>
+
+  <!-- Modal Tambah Bunga Baru -->
+  <div class="modal fade" id="addFlowerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-cream border-gold-subtle rounded-4 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h6 class="modal-title font-serif fw-bold text-maroon">Tambah Koleksi Bunga Baru</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form onsubmit="addNewFlowerProduct(event)">
+          <div class="modal-body small">
+            <div class="mb-2">
+              <label class="form-label x-small fw-bold text-muted mb-1">Nama Bunga</label>
+              <input type="text" id="new-flower-name" class="form-control form-control-sm rounded-3" placeholder="Contoh: Pastel Peony Luxury" required />
+            </div>
+            <div class="row g-2 mb-2">
+              <div class="col-6">
+                <label class="form-label x-small fw-bold text-muted mb-1">Kategori</label>
+                <select id="new-flower-cat" class="form-select form-select-sm rounded-3">
+                  <option value="bouquet">Garden Bouquet</option>
+                  <option value="lilies">Lilies</option>
+                  <option value="roses">Roses</option>
+                  <option value="decor">Vase & Decor</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label x-small fw-bold text-muted mb-1">Harga ($)</label>
+                <input type="number" id="new-flower-price" class="form-control form-control-sm rounded-3" placeholder="95" min="1" required />
+              </div>
+            </div>
+            <div class="mb-2">
+              <label class="form-label x-small fw-bold text-muted mb-1">Path Foto di Folder img/</label>
+              <input type="text" id="new-flower-img" class="form-control form-control-sm rounded-3" placeholder="img/nama-foto.jpg" />
+            </div>
+            <div class="mb-2">
+              <label class="form-label x-small fw-bold text-muted mb-1">Deskripsi Singkat</label>
+              <textarea id="new-flower-desc" rows="2" class="form-control form-control-sm rounded-3" placeholder="Deskripsi rangkaian bunga..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-sm btn-light rounded-pill px-3" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-sm btn-pink-primary rounded-pill px-4">Simpan ke Butik</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="app-bottom-nav fixed-bottom">
+    <div class="container max-w-960">
+      <div class="row g-0 text-center">
+        <div class="col"><a href="index.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-house-heart"></i> Home</a></div>
+        <div class="col"><a href="shop.html" class="bottom-nav-item d-block text-decoration-none active"><i class="bi bi-grid"></i> Shop</a></div>
+        <div class="col"><a href="cart.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-bag-check"></i> Cart <span class="badge rounded-pill nav-badge" id="bottom-cart-badge">0</span></a></div>
+        <div class="col"><a href="orders.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-receipt"></i> Orders</a></div>
+        <div class="col"><a href="info.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-info-circle"></i> Info</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-dark border-0 rounded-4" role="alert">
+      <div class="d-flex">
+        <div class="toast-body small" id="appToastText">Berhasil ditambahkan!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

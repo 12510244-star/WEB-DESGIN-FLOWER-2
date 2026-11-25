@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamy Bloom — Luxury Boutique Flower Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       GRAND LUXURY OPENING CURTAIN (KHUSUS PEMBUKAAN HOME)
+       ========================================================= -->
+  <div id="boutique-intro" aria-hidden="true">
+    <div class="intro-curtain curtain-left"></div>
+    <div class="intro-curtain curtain-right"></div>
+    <div class="intro-center-emblem text-center">
+      <div class="intro-flower-ring mx-auto mb-3">
+        <i class="bi bi-flower1 intro-bloom-icon"></i>
+      </div>
+      <span class="intro-sub text-uppercase">Welcome to</span>
+      <h2 class="font-serif fw-bold text-maroon intro-brand-title mb-1">Dreamy Bloom</h2>
+      <p class="x-small text-gold fw-semibold mb-0">Haute Floral Couture & Luxury Decor</p>
+    </div>
+  </div>
+
+  <!-- Top Glass Navbar -->
+  <header class="app-topbar sticky-top py-2 px-3">
+    <div class="container d-flex justify-content-between align-items-center max-w-960">
+      <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+        <span class="brand-icon-circle"><i class="bi bi-flower1 fs-5 text-pink-accent"></i></span>
+        <div>
+          <h6 class="font-serif fw-bold text-maroon mb-0">Dreamy Bloom</h6>
+          <span class="x-small text-gold fw-semibold d-block lh-1">Luxury Flower Boutique</span>
+        </div>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <a href="shop.html" class="btn btn-sm btn-gold-outline rounded-pill px-3">
+          <i class="bi bi-stars me-1 text-gold"></i> Catalog
+        </a>
+        <a href="cart.html" class="btn btn-sm btn-pink-primary rounded-pill px-3">
+          <i class="bi bi-bag-heart me-1"></i> <span id="top-cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container py-3 max-w-960">
+    <!-- Luxury Hero Banner -->
+    <section class="hero-card p-4 p-md-5 mb-3">
+      <!-- Dekorasi Bunga Melayang & Parallax -->
+      <svg class="floral-ornament ornament-tr" data-parallax="-35" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="10" fill="#c69c53"/>
+        <ellipse cx="50" cy="24" rx="12" ry="20" fill="#f5b8ce"/>
+        <ellipse cx="50" cy="76" rx="12" ry="20" fill="#f5b8ce"/>
+        <ellipse cx="24" cy="50" rx="20" ry="12" fill="#fce0ea"/>
+        <ellipse cx="76" cy="50" rx="20" ry="12" fill="#fce0ea"/>
+      </svg>
+      <svg class="floral-ornament ornament-bl" data-parallax="30" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="9" fill="#c69c53"/>
+        <ellipse cx="32" cy="32" rx="16" ry="10" transform="rotate(-45 32 32)" fill="#f5b8ce"/>
+        <ellipse cx="68" cy="68" rx="16" ry="10" transform="rotate(-45 68 68)" fill="#f5b8ce"/>
+        <ellipse cx="68" cy="32" rx="16" ry="10" transform="rotate(45 68 32)" fill="#fce0ea"/>
+        <ellipse cx="32" cy="68" rx="16" ry="10" transform="rotate(45 32 68)" fill="#fce0ea"/>
+      </svg>
+
+      <div class="row align-items-center g-4 position-relative z-2">
+        <div class="col-md-7 text-center text-md-start">
+          <div class="hero-eyebrow hero-stagger mb-3">
+            <i class="bi bi-stars text-gold"></i>
+            <span>Haute Floral Couture • Kode: BLOOM2026</span>
+          </div>
+          <h1 class="font-serif fw-bold text-maroon display-5 mb-2 reveal-words hero-title-3d">
+            Whispers of Pink Luxury in Every Petal
+          </h1>
+          <p class="text-muted small mb-4 hero-stagger">
+            Koleksi buket bunga segar pilihan dan vas dekorasi butik dengan sentuhan blush pink, cream, dan pita sutra mewah untuk momen paling berkesan.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-2 hero-stagger">
+            <a href="shop.html" class="btn btn-pink-primary rounded-pill px-4 py-2">
+              Explore Boutique <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+            <a href="cart.html" class="btn btn-gold-outline rounded-pill px-4 py-2">
+              Checkout Bag
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-5 text-center hero-visual-entrance">
+          <div class="hero-bouquet-wrapper">
+            <!-- Cincin Emas Berputar & Bintang Berkelip -->
+            <div class="hero-gold-ring"></div>
+            <span class="hero-sparkle sp-1">✦</span>
+            <span class="hero-sparkle sp-2">✧</span>
+            <span class="hero-sparkle sp-3">✦</span>
+            <img
+              src="img/gardenflower.jpg"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80'"
+              alt="Dreamy Bloom Bouquet"
+              class="img-fluid rounded-circle hero-bouquet"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Feature Strip -->
+      <div class="row row-cols-3 row-cols-md-5 g-2 mt-4 pt-3 border-top border-white text-center position-relative z-2">
+        <div class="col feature-item"><div class="feature-pill-icon"><i class="bi bi-flower2"></i></div><span class="x-small fw-bold d-block">Fresh Blooms</span></div>
+        <div class="col feature-item"><div class="feature-pill-icon"><i class="bi bi-truck"></i></div><span class="x-small fw-bold d-block">Same-Day VIP</span></div>
+        <div class="col feature-item"><div class="feature-pill-icon"><i class="bi bi-award"></i></div><span class="x-small fw-bold d-block">Master Florist</span></div>
+        <div class="col feature-item"><div class="feature-pill-icon"><i class="bi bi-gem"></i></div><span class="x-small fw-bold d-block">Silk & Gold Wrap</span></div>
+        <div class="col col-12 feature-item"><div class="feature-pill-icon"><i class="bi bi-heart"></i></div><span class="x-small fw-bold d-block">Bespoke Gift</span></div>
+      </div>
+    </section>
+
+    <!-- Luxury Running Marquee Ribbon -->
+    <div class="luxury-marquee-bar rounded-pill mb-4 py-2 px-3">
+      <div class="marquee-track">
+        <span>✦ DREAMY BLOOM LUXURY BOUTIQUE</span>
+        <span>❀ FRESH PASTEL ROSES & ORIENTAL LILIES</span>
+        <span>✦ CHAMPAGNE GOLD CALLIGRAPHY CARD</span>
+        <span>❀ SAME-DAY WHITE-GLOVE DELIVERY</span>
+        <span>✦ USE CODE: BLOOM2026 FOR 10% OFF</span>
+        <span>✦ DREAMY BLOOM LUXURY BOUTIQUE</span>
+        <span>❀ FRESH PASTEL ROSES & ORIENTAL LILIES</span>
+        <span>✦ CHAMPAGNE GOLD CALLIGRAPHY CARD</span>
+        <span>❀ SAME-DAY WHITE-GLOVE DELIVERY</span>
+        <span>✦ USE CODE: BLOOM2026 FOR 10% OFF</span>
+      </div>
+    </div>
+
+    <!-- Curated Popular Picks -->
+    <section class="reveal-section mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-3 pt-1">
+        <div>
+          <span class="x-small text-gold fw-bold text-uppercase">Curated Selection</span>
+          <h4 class="font-serif fw-bold text-maroon mb-0 reveal-words">Signature Boutique Blooms</h4>
+        </div>
+        <a href="shop.html" class="btn btn-sm btn-gold-outline rounded-pill px-3">Lihat Semua →</a>
+      </div>
+      <div class="row row-cols-2 row-cols-md-4 g-3" id="home-featured-grid"></div>
+    </section>
+
+    <!-- Atelier Experience Banner -->
+    <section class="reveal-section bg-cream border-gold-subtle rounded-4 p-4 p-md-5 shadow-xs text-center position-relative overflow-hidden mb-4">
+      <svg class="floral-ornament ornament-tr" data-parallax="-20" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="10" fill="#c69c53"/>
+        <ellipse cx="50" cy="24" rx="12" ry="20" fill="#f5b8ce"/>
+        <ellipse cx="50" cy="76" rx="12" ry="20" fill="#f5b8ce"/>
+        <ellipse cx="24" cy="50" rx="20" ry="12" fill="#fce0ea"/>
+        <ellipse cx="76" cy="50" rx="20" ry="12" fill="#fce0ea"/>
+      </svg>
+      <span class="hero-eyebrow mb-2"><i class="bi bi-flower1 text-pink-accent"></i> Dreamy Bloom Atelier</span>
+      <h3 class="font-serif fw-bold text-maroon mb-2 reveal-words">Crafted With Romance & Grace</h3>
+      <p class="text-muted small mx-auto max-w-540 mb-3">
+        Setiap tangkai mawar, lily, dan bunga taman dirangkai langsung di studio kami dengan kartu ucapan kaligrafi emas personal.
+      </p>
+      <a href="info.html" class="btn btn-pink-primary rounded-pill px-4 py-2 small">Tentang Butik Kami</a>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="app-bottom-nav fixed-bottom">
+    <div class="container max-w-960">
+      <div class="row g-0 text-center">
+        <div class="col"><a href="index.html" class="bottom-nav-item d-block text-decoration-none active"><i class="bi bi-house-heart"></i> Home</a></div>
+        <div class="col"><a href="shop.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-grid"></i> Shop</a></div>
+        <div class="col"><a href="cart.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-bag-check"></i> Cart <span class="badge rounded-pill nav-badge" id="bottom-cart-badge">0</span></a></div>
+        <div class="col"><a href="orders.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-receipt"></i> Orders</a></div>
+        <div class="col"><a href="info.html" class="bottom-nav-item d-block text-decoration-none"><i class="bi bi-info-circle"></i> Info</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Toast -->
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="appToast" class="toast align-items-center text-bg-dark border-0 rounded-4" role="alert">
+      <div class="d-flex">
+        <div class="toast-body small" id="appToastText">Berhasil ditambahkan!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
